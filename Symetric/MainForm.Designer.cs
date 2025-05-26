@@ -58,7 +58,6 @@
             this.dgvResults.Name = "dgvResults";
             this.dgvResults.Size = new System.Drawing.Size(559, 254);
             this.dgvResults.TabIndex = 1;
-            this.dgvResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResults_CellContentClick);
             // 
             // btnStart
             // 
@@ -115,6 +114,8 @@
             this.PerformLayout();
 
         }
+
+
 
         #endregion
 
