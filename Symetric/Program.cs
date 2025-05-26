@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Symetric
+namespace Asymmetric
 {
     static class Program
     {

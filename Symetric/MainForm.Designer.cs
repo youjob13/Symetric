@@ -1,4 +1,7 @@
-﻿namespace Symetric
+﻿using System;
+using System.Windows.Forms;
+
+namespace Asymmetric
 {
     partial class MainForm
     {
@@ -28,104 +31,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtFilePath = new System.Windows.Forms.TextBox();
-            this.dgvResults = new System.Windows.Forms.DataGridView();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Algorithm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EcnryptionTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DecryptionTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
+            this.btnDecryptForeign = new System.Windows.Forms.Button();
+            this.btnGenerateKeys = new System.Windows.Forms.Button();
+            this.btnExportKey = new System.Windows.Forms.Button();
+            this.buttonImportPublicKey = new System.Windows.Forms.Button();
+            this.buttonEncryptWithForeign = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtFilePath
+            // btnDecryptForeign
             // 
-            this.txtFilePath.Location = new System.Drawing.Point(116, 65);
-            this.txtFilePath.Name = "txtFilePath";
-            this.txtFilePath.Size = new System.Drawing.Size(100, 20);
-            this.txtFilePath.TabIndex = 0;
+            this.btnDecryptForeign.Location = new System.Drawing.Point(63, 147);
+            this.btnDecryptForeign.Name = "btnDecryptForeign";
+            this.btnDecryptForeign.Size = new System.Drawing.Size(153, 23);
+            this.btnDecryptForeign.TabIndex = 2;
+            this.btnDecryptForeign.Text = "Decrypt Foreign File";
+            this.btnDecryptForeign.UseVisualStyleBackColor = true;
+            this.btnDecryptForeign.Click += new System.EventHandler(this.btnDecryptForeign_Click);
             // 
-            // dgvResults
+            // btnGenerateKeys
             // 
-            this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Algorithm,
-            this.Mode,
-            this.EcnryptionTime,
-            this.DecryptionTime});
-            this.dgvResults.Location = new System.Drawing.Point(60, 115);
-            this.dgvResults.Name = "dgvResults";
-            this.dgvResults.Size = new System.Drawing.Size(559, 254);
-            this.dgvResults.TabIndex = 1;
-            this.dgvResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResults_CellContentClick);
+            this.btnGenerateKeys.Location = new System.Drawing.Point(63, 13);
+            this.btnGenerateKeys.Name = "btnGenerateKeys";
+            this.btnGenerateKeys.Size = new System.Drawing.Size(153, 23);
+            this.btnGenerateKeys.TabIndex = 4;
+            this.btnGenerateKeys.Text = "Generate Keys";
+            this.btnGenerateKeys.UseVisualStyleBackColor = true;
+            this.btnGenerateKeys.Click += new System.EventHandler(this.btnGenerateKeys_Click);
             // 
-            // btnStart
+            // btnExportKey
             // 
-            this.btnStart.Location = new System.Drawing.Point(248, 62);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
-            this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "Start Test";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.button1_Click);
+            this.btnExportKey.Location = new System.Drawing.Point(222, 12);
+            this.btnExportKey.Name = "btnExportKey";
+            this.btnExportKey.Size = new System.Drawing.Size(153, 23);
+            this.btnExportKey.TabIndex = 5;
+            this.btnExportKey.Text = "Export Keys";
+            this.btnExportKey.UseVisualStyleBackColor = true;
+            this.btnExportKey.Click += new System.EventHandler(this.btnExportKeys_Click);
             // 
-            // label1
+            // buttonImportPublicKey
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "File path:";
+            this.buttonImportPublicKey.Location = new System.Drawing.Point(63, 86);
+            this.buttonImportPublicKey.Name = "buttonImportPublicKey";
+            this.buttonImportPublicKey.Size = new System.Drawing.Size(81, 23);
+            this.buttonImportPublicKey.TabIndex = 6;
+            this.buttonImportPublicKey.Text = "Import Public Key";
+            this.buttonImportPublicKey.UseVisualStyleBackColor = true;
+            this.buttonImportPublicKey.Click += new System.EventHandler(this.buttonImportPublicKey_Click);
             // 
-            // Algorithm
+            // buttonEncryptWithForeign
             // 
-            this.Algorithm.HeaderText = "Algorithm";
-            this.Algorithm.Name = "Algorithm";
-            // 
-            // Mode
-            // 
-            this.Mode.HeaderText = "Mode";
-            this.Mode.Name = "Mode";
-            // 
-            // EcnryptionTime
-            // 
-            this.EcnryptionTime.HeaderText = "EcnryptionTime (ms)";
-            this.EcnryptionTime.Name = "EcnryptionTime";
-            // 
-            // DecryptionTime
-            // 
-            this.DecryptionTime.HeaderText = "DecryptionTime (ms)";
-            this.DecryptionTime.Name = "DecryptionTime";
+            this.buttonEncryptWithForeign.Location = new System.Drawing.Point(150, 86);
+            this.buttonEncryptWithForeign.Name = "buttonEncryptWithForeign";
+            this.buttonEncryptWithForeign.Size = new System.Drawing.Size(207, 23);
+            this.buttonEncryptWithForeign.TabIndex = 7;
+            this.buttonEncryptWithForeign.Text = "Encrypt File with Foreign Key";
+            this.buttonEncryptWithForeign.UseVisualStyleBackColor = true;
+            this.buttonEncryptWithForeign.Click += new System.EventHandler(this.buttonEncryptWithForeign_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.dgvResults);
-            this.Controls.Add(this.txtFilePath);
+            this.Controls.Add(this.buttonEncryptWithForeign);
+            this.Controls.Add(this.buttonImportPublicKey);
+            this.Controls.Add(this.btnExportKey);
+            this.Controls.Add(this.btnGenerateKeys);
+            this.Controls.Add(this.btnDecryptForeign);
             this.Name = "MainForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
-        #endregion
+        private void dgvResults_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
-        private System.Windows.Forms.TextBox txtFilePath;
-        private System.Windows.Forms.DataGridView dgvResults;
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Algorithm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EcnryptionTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DecryptionTime;
+        #endregion
+        private System.Windows.Forms.Button btnDecryptForeign;
+        private Button btnGenerateKeys;
+        private Button btnExportKey;
+        private Button buttonImportPublicKey;
+        private Button buttonEncryptWithForeign;
     }
 }
 
