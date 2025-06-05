@@ -11,21 +11,22 @@ namespace Symetric
         public static List<EncryptionResult> TestAlgorithms(byte[] data)
         {
             var results = new List<EncryptionResult>();
-            var algorithms = new (string Name, Func<SymmetricAlgorithm> Create, string[] Modes)[]
+            var algorithms = new (string Name, Func<SymmetricAlgorithm> Create, CipherMode[] Modes, PaddingMode Padding)[]
             {
-                ("DES", DES.Create, new[] { "ECB", "CBC" }),
-                ("TripleDES", TripleDES.Create, new[] { "ECB", "CBC" }),
-                ("RC2", RC2.Create, new[] { "ECB", "CBC" }),
-                ("Rijndael", Rijndael.Create, new[] { "ECB", "CBC" })
+                ("DES", DES.Create, new[] { CipherMode.ECB, CipherMode.CBC, CipherMode.CFB }, PaddingMode.PKCS7),
+                ("TripleDES", TripleDES.Create, new[] { CipherMode.ECB, CipherMode.CBC, CipherMode.CFB }, PaddingMode.PKCS7),
+                ("RC2", RC2.Create, new[] { CipherMode.ECB, CipherMode.CBC, CipherMode.CFB }, PaddingMode.PKCS7),
+                ("Rijndael", Rijndael.Create, new[] { CipherMode.ECB, CipherMode.CBC, CipherMode.CFB }, PaddingMode.PKCS7),
+                ("AES", Aes.Create, new[] { CipherMode.ECB, CipherMode.CBC, CipherMode.CFB }, PaddingMode.PKCS7)
             };
 
-            foreach (var (name, factory, modes) in algorithms)
+            foreach (var (name, factory, modes, padding) in algorithms)
             {
-                foreach (var modeStr in modes)
+                foreach (var modeValue in modes)
                 {
                     var algorithm = factory();
-                    algorithm.Mode = (CipherMode)Enum.Parse(typeof(CipherMode), modeStr);
-                    algorithm.Padding = PaddingMode.PKCS7;
+                    algorithm.Mode = modeValue;
+                    algorithm.Padding = padding;
                     algorithm.GenerateKey();
                     algorithm.GenerateIV();
 
@@ -42,7 +43,7 @@ namespace Symetric
                     results.Add(new EncryptionResult
                     {
                         Algorithm = name,
-                        Mode = modeStr,
+                        Mode = modeValue,
                         EncryptionTime = encryptionTime,
                         DecryptionTime = decryptionTime
                     });
